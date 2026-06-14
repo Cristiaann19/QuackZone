@@ -21,6 +21,7 @@ pnpm-debug.log*
 .DS_Store
 
 # jetbrains setting folder
-.idea/s
+.idea/
+.vscode/
 
 .agents

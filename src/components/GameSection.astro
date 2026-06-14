@@ -1,5 +1,28 @@
 ---
+import GameCard from "./GameCard.astro";
+import type { Game } from "./GameCard.astro";
+import { Icon } from "astro-icon/components";
 
+const { title, games } = Astro.props as {
+    title: string;
+    games: Game[];
+};
 ---
 
-<div></div>
+<section class="mb-10">
+    <div class="flex items-center justify-between mb-5">
+        <h2 class="text-white text-xl font-bold tracking-wide">{title}</h2>
+        <a
+            href="/"
+            class="flex items-center gap-1 text-sm font-medium hover:opacity-80 transition-opacity"
+            style="color: #f96300"
+        >
+            Ver todos <Icon name="lucide:chevron-right" class="w-4 h-4" />
+        </a>
+    </div>
+    <div
+        class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"
+    >
+        {games.map((game) => <GameCard game={game} />)}
+    </div>
+</section>

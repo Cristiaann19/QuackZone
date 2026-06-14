@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-import logoPagina from "../assets/logoPagina.png";
+import logoPagina from "../assets/logoPagina.webp";
 
 interface Tab {
   id: string;
@@ -69,16 +69,13 @@ const {
           <Icon name="lucide:shopping-cart" class="w-4 h-4 text-white" />
         </button>
 
-        <button
-          data-profile-btn
-          class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors"
+        <a
+          href="/login"
+          class="flex items-center gap-2 px-4 py-1.5 rounded-lg bg-primary text-white text-sm font-semibold hover:opacity-80 transition-opacity"
         >
-          <div
-            class="w-6 h-6 rounded bg-primary flex items-center justify-center text-xs font-black text-white"
-          >
-            <Icon name="lucide:user" class="w-4 h-4" />
-          </div>
-        </button>
+          <Icon name="lucide:user" class="w-4 h-4" />
+          Iniciar sesión
+        </a>
       </div>
 
       <button data-mobile-toggle class="md:hidden p-2 text-text">

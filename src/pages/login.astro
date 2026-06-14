@@ -1,0 +1,681 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import creeper from "../assets/Minecraft-creeper-face.webp";
+
+const blockColors = [
+  "#3d2b1f",
+  "#5c3d2e",
+  "#2d4a1e",
+  "#1e3a12",
+  "#4a3728",
+  "#6b4c38",
+  "#8b6347",
+  "#f96300",
+  "#c44d00",
+  "#ff8c42",
+  "#1a1a1a",
+  "#222",
+  "#2a2a2a",
+];
+---
+
+<Layout title="The QuackZone — Acceso">
+  <div
+    class="min-h-screen flex items-center justify-center px-4 py-12 relative"
+    style="background: #0a0a0a"
+  >
+    <!-- Pixel background blocks -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      {
+        Array.from({ length: 60 }).map((_, i) => {
+          const pseudo = Math.sin(42 + i * 7.3) * 0.5 + 0.5;
+          const pseudo2 = Math.cos(42 + i * 3.7) * 0.5 + 0.5;
+          const pseudo3 = Math.sin(42 + i * 11.1) * 0.5 + 0.5;
+          const size = 20 + Math.floor(pseudo * 24);
+          return (
+            <div
+              class="absolute"
+              style={{
+                left: `${pseudo * 100}%`,
+                top: `${pseudo2 * 100}%`,
+                width: size,
+                height: size,
+                background:
+                  blockColors[Math.floor(pseudo3 * blockColors.length)],
+                opacity: 0.05 + pseudo3 * 0.12,
+              }}
+            />
+          );
+        })
+      }
+    </div>
+
+    <!-- Floating decorations -->
+    <div
+      class="fixed top-8 left-8 flex flex-col gap-1 opacity-40 pointer-events-none"
+    >
+      {
+        [0, 1, 2].map((row) => (
+          <div class="flex gap-1">
+            {[0, 1, 2].map((col) => (
+              <div
+                style={{
+                  width: 24,
+                  height: 24,
+                  background: "#5a9e2f",
+                  boxShadow:
+                    "inset -6px -6px 0 rgba(0,0,0,0.35), inset 3px 3px 0 rgba(255,255,255,0.15)",
+                }}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <div
+      class="fixed bottom-8 right-8 flex flex-col gap-1 opacity-40 pointer-events-none"
+    >
+      {
+        [0, 1, 2].map((row) => (
+          <div class="flex gap-1">
+            {[0, 1, 2].map((col) => (
+              <div
+                style={{
+                  width: 20,
+                  height: 20,
+                  background: ["#3d7a3d", "#8b6347", "#5a5a5a", "#f96300"][
+                    (row + col) % 4
+                  ],
+                  boxShadow:
+                    "inset -5px -5px 0 rgba(0,0,0,0.35), inset 2px 2px 0 rgba(255,255,255,0.15)",
+                }}
+              />
+            ))}
+          </div>
+        ))
+      }
+    </div>
+
+    <!-- Card -->
+    <div
+      class="relative w-full max-w-md z-10"
+      style={{
+        background: "#131313",
+        border: "3px solid #2a2a2a",
+        boxShadow: "6px 6px 0 #000, inset 0 1px 0 rgba(255,255,255,0.05)",
+      }}
+    >
+      <!-- Pixel divider top -->
+      <div class="flex" style={{ height: 4 }}>
+        {
+          Array.from({ length: 28 }).map((_, i) => (
+            <div
+              style={{
+                flex: 1,
+                height: 4,
+                background: i % 2 === 0 ? "#f96300" : "#c44d00",
+              }}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Volver -->
+      <div class="px-8 pt-4">
+        <a
+          href="/"
+          class="flex items-center gap-1.5 text-xs uppercase tracking-widest hover:opacity-80 transition-opacity"
+          style={{ color: "#888", fontFamily: "monospace" }}
+        >
+          <Icon name="lucide:arrow-left" class="w-3.5 h-3.5" />
+          Volver a la tienda
+        </a>
+      </div>
+
+      <!-- Header -->
+      <div class="px-8 pt-2 pb-4 flex flex-col items-center gap-3">
+        <div class="flex items-center gap-3">
+          <Image
+            src={creeper}
+            alt="Creeper"
+            width={40}
+            height={40}
+            loading="eager"
+            class="image-render-pixel"
+          />
+          <div class="text-center">
+            <div
+              class="text-2xl font-black text-white uppercase tracking-widest"
+              style={{
+                fontFamily: "monospace",
+                textShadow: "2px 2px 0 #000, -1px -1px 0 rgba(249,99,0,0.3)",
+              }}
+            >
+              The Quack<span style="color: #f96300">Zone</span>
+            </div>
+            <div
+              class="text-xs uppercase tracking-widest"
+              style={{ color: "#666", fontFamily: "monospace" }}
+            >
+              Portal de acceso
+            </div>
+          </div>
+          <Image
+            src={creeper}
+            alt="Creeper"
+            width={40}
+            height={40}
+            loading="eager"
+            class="image-render-pixel"
+          />
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="px-8">
+        <div class="flex" style="border-bottom: 2px solid #222">
+          <button
+            data-tab="login"
+            class="flex-1 py-2.5 text-xs font-black uppercase tracking-widest relative active"
+            style={{
+              fontFamily: "monospace",
+              color: "#f96300",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Iniciar sesión
+            <div
+              class="absolute bottom-0 left-0 right-0 h-0.5"
+              style={{ background: "#f96300" }}
+            >
+            </div>
+          </button>
+          <button
+            data-tab="register"
+            class="flex-1 py-2.5 text-xs font-black uppercase tracking-widest text-center"
+            style={{
+              fontFamily: "monospace",
+              color: "#555",
+              background: "transparent",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Registrarse
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── Form: Login ─── -->
+      <div data-form="login" class="active">
+        <div class="px-8 py-6 flex flex-col gap-4">
+          <div
+            class="p-3 text-xs text-center uppercase tracking-widest"
+            style={{
+              background: "#1a1a1a",
+              color: "#555",
+              fontFamily: "monospace",
+              border: "1px solid #222",
+            }}
+          >
+            [ Ingresa tus credenciales de jugador ]
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="login-user"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Usuario / Email
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:user"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="login-user"
+                type="text"
+                placeholder="Steve123"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 12px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="login-pass"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Contraseña
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:lock"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="login-pass"
+                type="password"
+                placeholder="••••••••"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 48px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+              <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                <Icon
+                  name="lucide:eye-off"
+                  class="w-4 h-4"
+                  style={{ color: "#555" }}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-end">
+            <span
+              class="text-xs uppercase tracking-widest"
+              style={{ color: "#f96300", fontFamily: "monospace" }}
+            >
+              ¿Olvidaste tu contraseña?
+            </span>
+          </div>
+
+          <button
+            class="w-full relative py-3 px-6 font-black text-sm text-white uppercase tracking-widest transition-all duration-100 select-none"
+            style={{
+              background: "#f96300",
+              boxShadow:
+                "0 4px 0 #7a3000, inset 0 1px 0 rgba(255,255,255,0.15)",
+              letterSpacing: "0.15em",
+              border: "none",
+              outline: "none",
+              cursor: "pointer",
+            }}
+          >
+            <span class="flex items-center justify-center gap-2">
+              Iniciar sesión
+              <Icon name="lucide:chevron-right" class="w-4 h-4" />
+            </span>
+          </button>
+
+          <div class="flex items-center gap-3">
+            <div class="flex-1 h-px" style={{ background: "#222" }}></div>
+            <span
+              class="text-xs uppercase"
+              style={{ color: "#444", fontFamily: "monospace" }}>o</span
+            >
+            <div class="flex-1 h-px" style={{ background: "#222" }}></div>
+          </div>
+
+          <button
+            data-switch-tab="register"
+            class="w-full relative py-3 px-6 font-black text-sm text-white uppercase tracking-widest transition-all duration-100 select-none"
+            style={{
+              background: "#2a2a2a",
+              boxShadow: "0 4px 0 #111, inset 0 1px 0 rgba(255,255,255,0.15)",
+              letterSpacing: "0.15em",
+              border: "none",
+              outline: "none",
+              cursor: "pointer",
+            }}
+          >
+            Crear cuenta nueva
+          </button>
+        </div>
+      </div>
+
+      <!-- ─── Form: Register ─── -->
+      <div data-form="register">
+        <div class="px-8 py-6 flex flex-col gap-4">
+          <div
+            class="p-3 text-xs text-center uppercase tracking-widest"
+            style={{
+              background: "#1a1a1a",
+              color: "#555",
+              fontFamily: "monospace",
+              border: "1px solid #222",
+            }}
+          >
+            [ Crea tu cuenta de jugador ]
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="reg-user"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Nombre de jugador
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:user"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="reg-user"
+                type="text"
+                placeholder="Steve_Pro99"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 12px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="reg-email"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Correo electrónico
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:mail"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="reg-email"
+                type="email"
+                placeholder="steve@minecraft.com"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 12px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="reg-pass"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Contraseña
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:lock"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="reg-pass"
+                type="password"
+                placeholder="••••••••"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 48px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+              <div class="absolute right-3 top-1/2 -translate-y-1/2">
+                <Icon
+                  name="lucide:eye"
+                  class="w-4 h-4"
+                  style={{ color: "#555" }}
+                />
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              {
+                [1, 2, 3, 4].map((i) => (
+                  <div
+                    class="flex-1 h-1.5"
+                    style={{ background: i <= 2 ? "#f59e0b" : "#2a2a2a" }}
+                  />
+                ))
+              }
+              <span
+                class="text-xs font-bold"
+                style={{
+                  color: "#f59e0b",
+                  fontFamily: "monospace",
+                  minWidth: 48,
+                }}
+              >
+                Regular
+              </span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-1.5">
+            <label
+              for="reg-pass2"
+              class="text-xs font-black uppercase tracking-widest"
+              style={{ color: "#aaa", fontFamily: "monospace" }}
+            >
+              Confirmar contraseña
+            </label>
+            <div class="relative">
+              <div
+                class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none"
+              >
+                <Icon
+                  name="lucide:lock"
+                  class="w-4 h-4"
+                  style={{ color: "#666" }}
+                />
+              </div>
+              <input
+                id="reg-pass2"
+                type="password"
+                placeholder="••••••••"
+                class="w-full py-3 text-sm text-white outline-none"
+                style={{
+                  background: "#111",
+                  border: "2px solid #333",
+                  padding: "12px 12px 12px 48px",
+                  boxShadow: "inset 2px 2px 0 rgba(0,0,0,0.5)",
+                  fontFamily: "monospace",
+                }}
+              />
+            </div>
+          </div>
+
+          <button
+            class="w-full relative py-3 px-6 font-black text-sm text-white uppercase tracking-widest transition-all duration-100 select-none"
+            style={{
+              background: "#f96300",
+              boxShadow:
+                "0 4px 0 #7a3000, inset 0 1px 0 rgba(255,255,255,0.15)",
+              letterSpacing: "0.15em",
+              border: "none",
+              outline: "none",
+              cursor: "pointer",
+            }}
+          >
+            <span class="flex items-center justify-center gap-2">
+              ¡Unirse a The QuackZone!
+              <Icon name="lucide:chevron-right" class="w-4 h-4" />
+            </span>
+          </button>
+
+          <p
+            class="text-xs text-center leading-relaxed"
+            style={{ color: "#444", fontFamily: "monospace" }}
+          >
+            Al registrarte aceptas los{" "}
+            <span
+              class="cursor-pointer hover:opacity-80"
+              style={{ color: "#f96300" }}>Términos de servicio</span
+            >
+            {" "}y la{" "}
+            <span
+              class="cursor-pointer hover:opacity-80"
+              style={{ color: "#f96300" }}>Política de privacidad</span
+            >
+          </p>
+
+          <div class="flex items-center gap-3">
+            <div class="flex-1 h-px" style={{ background: "#222" }}></div>
+            <span
+              class="text-xs uppercase"
+              style={{ color: "#444", fontFamily: "monospace" }}>o</span
+            >
+            <div class="flex-1 h-px" style={{ background: "#222" }}></div>
+          </div>
+
+          <button
+            data-switch-tab="login"
+            class="w-full relative py-3 px-6 font-black text-sm text-white uppercase tracking-widest transition-all duration-100 select-none"
+            style={{
+              background: "#2a2a2a",
+              boxShadow: "0 4px 0 #111, inset 0 1px 0 rgba(255,255,255,0.15)",
+              letterSpacing: "0.15em",
+              border: "none",
+              outline: "none",
+              cursor: "pointer",
+            }}
+          >
+            Ya tengo cuenta
+          </button>
+        </div>
+      </div>
+
+      <!-- Pixel divider bottom -->
+      <div class="flex" style={{ height: 4 }}>
+        {
+          Array.from({ length: 28 }).map((_, i) => (
+            <div
+              style={{
+                flex: 1,
+                height: 4,
+                background: i % 2 === 0 ? "#f96300" : "#c44d00",
+              }}
+            />
+          ))
+        }
+      </div>
+
+      <!-- Bottom blocks -->
+      <div
+        class="flex justify-center gap-1 py-2"
+        style={{ background: "#0d0d0d" }}
+      >
+        {
+          ["#3d7a3d", "#f96300", "#8b6347", "#f96300", "#3d7a3d"].map((c) => (
+            <div
+              style={{
+                width: 10,
+                height: 10,
+                background: c,
+                boxShadow:
+                  "inset -2.5px -2.5px 0 rgba(0,0,0,0.35), inset 1px 1px 0 rgba(255,255,255,0.15)",
+              }}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<style is:global>
+  .image-render-pixel {
+    image-rendering: pixelated;
+  }
+  [data-form] {
+    display: none;
+  }
+  [data-form].active {
+    display: block;
+  }
+  [data-tab] {
+    outline: none;
+  }
+  [data-tab] div {
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  [data-tab].active div {
+    opacity: 1;
+  }
+  [data-tab].active {
+    color: #f96300 !important;
+  }
+  [data-tab]:not(.active) {
+    color: #555 !important;
+  }
+</style>
+
+<script>
+  const tabs = document.querySelectorAll("[data-tab]");
+  const forms = document.querySelectorAll("[data-form]");
+
+  function switchTab(target: any) {
+    tabs.forEach((t: any) =>
+      t.classList.toggle("active", t.dataset.tab === target),
+    );
+    forms.forEach((f: any) =>
+      f.classList.toggle("active", f.dataset.form === target),
+    );
+  }
+
+  tabs.forEach((tab: any) => {
+    tab.addEventListener("click", () => switchTab(tab.dataset.tab));
+  });
+
+  document.querySelectorAll("[data-switch-tab]").forEach((btn: any) => {
+    btn.addEventListener("click", () => switchTab(btn.dataset.switchTab));
+  });
+</script>

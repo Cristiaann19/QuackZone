@@ -3,9 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import HeroSection from "../components/HeroSection.astro";
 import StatsBar from "../components/StatsBar.astro";
-import ProductGrid from "../components/ProductGrid.astro";
+import GameSection from "../components/GameSection.astro";
 import Footer from "../components/Footer.astro";
 import { games, stats } from "../data/game";
+
+const popular = games.slice(0, 6);
+const accion = games.filter((g) => g.genre === "accion");
+const aventura = games.filter((g) => g.genre === "aventura");
+const deportes = games.filter((g) => g.genre === "deportes");
+const lucha = games.filter((g) => g.genre === "lucha");
+const rpg = games.filter((g) => g.genre === "rpg");
 ---
 
 <Layout title="The QuackZone">
@@ -21,12 +28,29 @@ import { games, stats } from "../data/game";
         discount="-25%"
       />
     </div>
-    <div class="mt-6 mb-10">
+
+    <div class="mb-10">
       <StatsBar stats={stats} />
     </div>
-    <div class="mt-6 mb-10">
-      <ProductGrid games={games} title="Catálogo" />
-    </div>
+
+    {
+      popular.length > 0 && (
+        <GameSection title="🔥 Juegos Populares" games={popular} />
+      )
+    }
+    {accion.length > 0 && <GameSection title="⚔️ Acción" games={accion} />}
+    {
+      aventura.length > 0 && (
+        <GameSection title="🗺️ Aventura" games={aventura} />
+      )
+    }
+    {
+      deportes.length > 0 && (
+        <GameSection title="⚽ Deportes" games={deportes} />
+      )
+    }
+    {lucha.length > 0 && <GameSection title="🥊 Lucha" games={lucha} />}
+    {rpg.length > 0 && <GameSection title="🎭 RPG" games={rpg} />}
   </main>
 
   <Footer />
