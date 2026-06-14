@@ -1,0 +1,103 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import logoPagina from "../assets/logoPagina.png";
+
+interface Tab {
+  id: string;
+  label: string;
+}
+
+const {
+  tabs = [
+    { id: "inicio", label: "Inicio" },
+    { id: "catalogo", label: "Catálogo" },
+    { id: "ofertas", label: "Ofertas" },
+    { id: "soporte", label: "Soporte" },
+  ],
+}: {
+  tabs?: Tab[];
+} = Astro.props;
+---
+
+<nav
+  class="fixed top-0 left-0 right-0 z-50 bg-[#111111] border-b border-[#2a2a2a]"
+>
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center gap-2">
+        <Image
+          src={logoPagina}
+          alt="QuackZONE"
+          class="h-12 w-auto"
+          loading={"eager"}
+        />
+      </div>
+
+      <div class="hidden md:flex items-center gap-1">
+        {
+          tabs.map((tab) => (
+            <button
+              data-tab
+              data-tab-id={tab.id}
+              class="px-5 py-2 rounded-md transition-all duration-200 text-sm font-medium text-text-secondary hover:bg-white/10"
+            >
+              {tab.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <div class="hidden md:flex items-center gap-3">
+        <form data-search-form class="relative">
+          <input
+            type="text"
+            placeholder="Buscar juego..."
+            data-search-input
+            class="pl-9 pr-4 py-2 rounded-lg text-sm text-white outline-none w-48 bg-[#222] border border-[#333] placeholder:text-text-secondary/50"
+          />
+          <Icon
+            name="lucide:search"
+            class="absolute left-2.5 top-2.5 w-4 h-4 text-text-secondary/50"
+          />
+        </form>
+
+        <button
+          data-cart-btn
+          class="relative p-2 rounded-lg hover:bg-white/10 transition-colors"
+        >
+          <Icon name="lucide:shopping-cart" class="w-4 h-4 text-white" />
+        </button>
+
+        <button
+          data-profile-btn
+          class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/10 transition-colors"
+        >
+          <div
+            class="w-6 h-6 rounded bg-primary flex items-center justify-center text-xs font-black text-white"
+          >
+            <Icon name="lucide:user" class="w-4 h-4" />
+          </div>
+        </button>
+      </div>
+
+      <button data-mobile-toggle class="md:hidden p-2 text-text">
+        <Icon name="lucide:menu" class="w-5 h-5 text-white" />
+      </button>
+    </div>
+
+    <div data-mobile-menu class="md:hidden pb-4 flex-col gap-2 hidden">
+      {
+        tabs.map((tab) => (
+          <button
+            data-tab
+            data-tab-id={tab.id}
+            class="px-4 py-2 rounded-md text-sm font-medium text-left text-text bg-surface-2"
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+  </div>
+</nav>

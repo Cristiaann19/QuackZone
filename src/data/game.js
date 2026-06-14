@@ -1,0 +1,35 @@
+export const games = [
+  { id: 1, title: "Call of Duty: Black Ops 6", price: 59.99, originalPrice: 79.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2519060/capsule_616x353.jpg", rating: 4.7, platform: ["PC", "PS5", "PS4"], genre: "accion", discount: 25 },
+  { id: 2, title: "Modern Warfare III", price: 49.99, originalPrice: 69.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2161700/capsule_616x353.jpg", rating: 4.4, platform: ["PC", "PS5", "PS4"], genre: "accion", discount: 28 },
+  { id: 3, title: "Ghost of Tsushima", price: 39.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202010/2217/VquYKqYf5QetZuZBfznj88pn.png", rating: 4.9, platform: ["PS5", "PS4"], genre: "accion" },
+  { id: 4, title: "Resident Evil 4 Remake", price: 34.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2050650/capsule_616x353.jpg", rating: 4.8, platform: ["PC", "PS5", "PS4"], genre: "accion", discount: 40 },
+  { id: 5, title: "The Last of Us Part I", price: 44.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202206/0720/iIsO96QrPBsGnHGmkfqE1Ves.png", rating: 4.9, platform: ["PC", "PS5"], genre: "accion" },
+  { id: 6, title: "Hogwarts Legacy", price: 29.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/990080/capsule_616x353.jpg", rating: 4.6, platform: ["PC", "PS5", "PS4"], genre: "accion", discount: 50 },
+  { id: 7, title: "GTA V", price: 14.99, originalPrice: 29.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/271590/capsule_616x353.jpg", rating: 4.8, platform: ["PC", "PS5", "PS4"], genre: "aventura", discount: 50 },
+  { id: 8, title: "Uncharted 4", price: 19.99, image: "https://image.api.playstation.com/vulcan/img/cfn/11307R0GVahklaKuE9BFhXo5QZHYm00N4NbZbEF6KxSFmVv-tVF_5AKgwl-5P0rU7zTL4VnOqv_lm08-ZZjCO2xn.png", rating: 4.9, platform: ["PC", "PS4", "PS5"], genre: "aventura" },
+  { id: 9, title: "Back 4 Blood", price: 12.99, originalPrice: 39.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/924970/capsule_616x353.jpg", rating: 4.2, platform: ["PC", "PS5", "PS4"], genre: "aventura", discount: 67 },
+  { id: 10, title: "Ghost of Tsushima: Director", price: 49.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/2415/uFSqTuUoFBQLATTOL36jQBIT.png", rating: 4.9, platform: ["PC", "PS5"], genre: "aventura", isNew: true },
+  { id: 11, title: "Horizon Zero Dawn", price: 9.99, originalPrice: 49.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1151640/capsule_616x353.jpg", rating: 4.7, platform: ["PC", "PS4"], genre: "aventura", discount: 80 },
+  { id: 12, title: "Cyberpunk 2077", price: 24.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1091500/capsule_616x353.jpg", rating: 4.5, platform: ["PC", "PS5", "PS4"], genre: "aventura", discount: 58 },
+  { id: 13, title: "EA Sports FC 25", price: 39.99, originalPrice: 69.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202406/0900/1f2d41e6f47a81cd58b53be1c0aead4b9e2f9d6d5ff4a5cb.png", rating: 4.3, platform: ["PC", "PS5", "PS4"], genre: "deportes", discount: 42 },
+  { id: 14, title: "NBA 2K25", price: 29.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2338770/capsule_616x353.jpg", rating: 4.1, platform: ["PC", "PS5", "PS4"], genre: "deportes", discount: 50 },
+  { id: 15, title: "Gran Turismo 7", price: 44.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202109/1321/VT7Zt0JKBW8UWiGCLJ6LFcaE.png", rating: 4.6, platform: ["PS5", "PS4"], genre: "deportes" },
+  { id: 16, title: "F1 24", price: 34.99, originalPrice: 69.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/2488620/capsule_616x353.jpg", rating: 4.3, platform: ["PC", "PS5", "PS4"], genre: "deportes", discount: 50 },
+  { id: 17, title: "UFC 5", price: 24.99, originalPrice: 59.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202309/2001/ee27dc7aa7c040929da7c7f4f3cf4ead1ee9cbc88fae5ce8.png", rating: 4.2, platform: ["PS5", "PS4"], genre: "deportes", discount: 58 },
+  { id: 18, title: "Rocket League", price: 0, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/252950/capsule_616x353.jpg", rating: 4.7, platform: ["PC", "PS4", "PS5"], genre: "deportes" },
+  { id: 19, title: "Mortal Kombat 1", price: 34.99, originalPrice: 69.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1971870/capsule_616x353.jpg", rating: 4.4, platform: ["PC", "PS5"], genre: "lucha", discount: 50 },
+  { id: 20, title: "Street Fighter 6", price: 29.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1794680/capsule_616x353.jpg", rating: 4.7, platform: ["PC", "PS5", "PS4"], genre: "lucha", discount: 50 },
+  { id: 21, title: "Tekken 8", price: 39.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1778820/capsule_616x353.jpg", rating: 4.6, platform: ["PC", "PS5"], genre: "lucha", discount: 33, isNew: true },
+  { id: 22, title: "Dragon Ball FighterZ", price: 9.99, originalPrice: 49.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/678950/capsule_616x353.jpg", rating: 4.5, platform: ["PC", "PS4"], genre: "lucha", discount: 80 },
+  { id: 23, title: "Elden Ring", price: 39.99, originalPrice: 59.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1245620/capsule_616x353.jpg", rating: 4.9, platform: ["PC", "PS5", "PS4"], genre: "rpg", discount: 33 },
+  { id: 24, title: "God of War: Ragnarök", price: 39.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202207/1210/4xJ8XB3bi888QTLZYdl7Oi0s.png", rating: 4.9, platform: ["PC", "PS5", "PS4"], genre: "rpg" },
+  { id: 25, title: "Baldur's Gate 3", price: 49.99, image: "https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/1086940/capsule_616x353.jpg", rating: 5.0, platform: ["PC"], genre: "rpg" },
+  { id: 26, title: "Spider-Man 2", price: 59.99, image: "https://image.api.playstation.com/vulcan/ap/rnd/202306/1219/1c7b75d8d02b589d7248f2a28c94fe7a13d7b4bef35c8c54.png", rating: 4.8, platform: ["PS5"], genre: "rpg", isNew: true },
+];
+
+export const stats = [
+  { label: "Juegos disponibles", value: "250+", icon: "lucide:gamepad-2" },
+  { label: "Usuarios activos", value: "500+", icon: "lucide:users" },
+  { label: "Descargas hoy", value: "1200+", icon: "lucide:download" },
+  { label: "Ofertas activas", value: "35+", icon: "lucide:gift" }
+];

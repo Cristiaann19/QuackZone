@@ -1,0 +1,33 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import HeroSection from "../components/HeroSection.astro";
+import StatsBar from "../components/StatsBar.astro";
+import ProductGrid from "../components/ProductGrid.astro";
+import Footer from "../components/Footer.astro";
+import { games, stats } from "../data/game";
+---
+
+<Layout title="The QuackZone">
+  <Header username="Cristian" cartCount={3} />
+  <main class="max-w-7xl mx-auto px-4 pt-20 pb-16">
+    <div class="mt-6 mb-10">
+      <HeroSection
+        badge="DESTACADO"
+        title="Call of Duty:"
+        subtitle="Black Ops 6"
+        price="59.99"
+        originalPrice="79.99"
+        discount="-25%"
+      />
+    </div>
+    <div class="mt-6 mb-10">
+      <StatsBar stats={stats} />
+    </div>
+    <div class="mt-6 mb-10">
+      <ProductGrid games={games} title="Catálogo" />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

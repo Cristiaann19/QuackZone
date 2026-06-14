@@ -1,0 +1,109 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import blackOps6 from "../assets/blackOps6.webp";
+
+const { title, subtitle, badge, price, originalPrice, discount } = Astro.props;
+---
+
+<div
+  class="relative overflow-hidden rounded-2xl"
+  style="background: linear-gradient(135deg, #0d0d0d 0%, #1a0a00 60%, #2d1200 100%)"
+>
+  <div class="absolute inset-0">
+    <Image
+      src={blackOps6}
+      alt="Call of Duty Black Ops 6 Fondo"
+      width={1920}
+      height={1080}
+      loading={"eager"}
+    />
+    <div
+      class="absolute inset-0"
+      style="background: linear-gradient(90deg, rgba(0,0,0,0.9) 40%, transparent 100%)"
+    >
+    </div>
+  </div>
+
+  <div
+    class="relative z-10 flex flex-col md:flex-row items-center gap-8 p-8 md:p-12 min-h-[360px]"
+  >
+    <div class="flex-1">
+      <div class="flex items-center gap-2 mb-4">
+        <span
+          class="text-xs font-bold px-2 py-1 rounded"
+          style="background: #f96300; color: #fff"
+        >
+          {badge}
+        </span>
+        <span class="text-xs" style="color: #888">Disponible ahora</span>
+      </div>
+      <h1 class="text-white text-4xl md:text-5xl font-black leading-tight mb-3">
+        {title}<br />
+        <span style="color: #f96300">{subtitle}</span>
+      </h1>
+      <p class="text-sm mb-6 max-w-md" style="color: #aaa">
+        Sumérgete en la experiencia de acción definitiva. Multijugador épico,
+        campaña impactante y modo Zombies renovado.
+      </p>
+      <div class="flex items-center gap-3 mb-6">
+        <span class="text-3xl font-black" style="color: #f96300">
+          ${price}
+        </span>
+        {
+          originalPrice && (
+            <span class="text-lg line-through" style="color: #555">
+              ${originalPrice}
+            </span>
+          )
+        }
+        {
+          discount && (
+            <span
+              class="text-xs font-bold px-2 py-1 rounded"
+              style="background: #22c55e20; color: #22c55e"
+            >
+              {discount}
+            </span>
+          )
+        }
+      </div>
+      <div class="flex items-center gap-3">
+        <button
+          class="flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-white transition-opacity hover:opacity-80"
+          style="background: #f96300"
+        >
+          <Icon name="lucide:shopping-cart" class="w-5 h-5" />
+          Comprar ahora
+        </button>
+        <button
+          class="flex items-center gap-2 px-6 py-3 rounded-xl font-bold transition-colors"
+          style="background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.2)"
+        >
+          <Icon name="lucide:play" class="w-4 h-4" />
+          Ver trailer
+        </button>
+      </div>
+    </div>
+
+    <div class="hidden md:flex flex-col gap-3">
+      {
+        [
+          "Campaña épica",
+          "Multijugador 150+ jugadores",
+          "Modo Zombies",
+          "Cross-play",
+        ].map((f) => (
+          <div class="flex items-center gap-2">
+            <Icon
+              name="lucide:chevron-right"
+              class="w-4 h-4"
+              style="color: #f96300"
+            />
+            <span class="text-sm text-white">{f}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</div>

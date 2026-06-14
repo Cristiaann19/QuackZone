@@ -1,0 +1,25 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { stats } = Astro.props as {
+  stats: { label: string; value: string; icon: string }[];
+};
+---
+
+<div
+  class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10 p-5 rounded-2xl border border-[#2a2a2a] bg-[#1a1a1a"
+>
+  {
+    stats.map((stat) => (
+      <div class="flex items-center gap-3">
+        <div class="p-2 rounded-lg" style="background: rgba(249,99,0,0.15)">
+          <Icon class="w-5 h-5" name={stat.icon} style="color: #f96300" />
+        </div>
+        <div>
+          <div class="text-white font-bold ">{stat.value}</div>
+          <div class="mt-1 text-sm text-text-secondary">{stat.label}</div>
+        </div>
+      </div>
+    ))
+  }
+</div>

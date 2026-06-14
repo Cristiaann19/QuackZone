@@ -1,0 +1,23 @@
+---
+import GameCard from "./GameCard.astro";
+import type { Game } from "./GameCard.astro";
+
+const { games, title } = Astro.props as {
+  games: Game[];
+  title?: string;
+};
+---
+
+<section class="px-6 py-20">
+  <div class="mx-auto max-w-(--container)">
+    {
+      title && (
+        <h2 class="mb-10 text-3xl font-bold text-text md:text-4xl">{title}</h2>
+      )
+    }
+
+    <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      {games.map((game) => <GameCard game={game} />)}
+    </div>
+  </div>
+</section>
